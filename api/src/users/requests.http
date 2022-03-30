@@ -1,0 +1,43 @@
+
+
+POST http://localhost:3000/auth/signup
+content-Type: application/json
+
+{
+    "email": "test@domain.com",
+    "password": "coucou42"
+}
+
+###
+
+
+POST http://localhost:3000/auth/signin
+content-Type: application/json
+
+{
+    "email": "test@domain.com",
+    "password": "coucou42"
+}
+
+
+###
+
+
+POST http://localhost:3000/auth/signout
+
+
+###
+
+
+GET http://localhost:3000/auth/whoami
+
+
+###
+GET http://localhost:3000/auth/622f8ded9a9da87a73ab4568
+
+
+###
+GET http://localhost:3000/auth?email=allo@gmail.com
+
+###
+DELETE http://localhost:3000/auth/623262c4e968500c331580dd

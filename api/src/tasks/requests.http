@@ -1,0 +1,36 @@
+
+
+POST http://localhost:3000/tasks/
+content-Type: application/json
+
+{
+  "name": "this is my date first e-this",
+  "count": 1,
+  "description":"one task",
+  "periodicity":"monthly"
+}
+###
+
+PATCH http://localhost:3000/tasks/1
+content-Type: application/json
+
+{
+  "name": "this is my date first e-this",
+  "count": 1,
+  "periodicity":"weekly"
+}
+
+###
+
+
+GET http://localhost:3000/tasks
+
+###
+GET http://localhost:3000/tasks/1
+
+
+###
+DELETE http://localhost:3000/tasks/1
+
+
+
