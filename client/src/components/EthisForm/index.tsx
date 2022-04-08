@@ -10,18 +10,25 @@ import { PickerInput}  from '../DayPickerInput';
 
 
 const Container = styled.div`
-padding:'20px';
+padding:20px;
+border-radius:10px;
+
 `
 
 const Title = styled.div`
-padding:'20px';
+padding:20px;
 `
 
 const Row =  styled.div`
 display:flex;
 flex-direction: row;
+justify-content:space-between;
 `
 
+const Column = styled.div`
+display:flex;
+flex-direction: column;
+`
 
 type Values = {
     name: string;
@@ -39,7 +46,6 @@ export const EthisForm = () => {
        const res = await create('/tasks', values,'POST');
     }
    
-
     return (
     <Container>
        <Formik
@@ -49,26 +55,29 @@ export const EthisForm = () => {
     }}
     onSubmit={onSubmit}>
         <Form>
-        <div>Nom du e-this  </div>
+        <div>Nom de l'isis</div>
         <Field name="name"/>
 
-        <div>desciption</div>
-        <Field  name="description"/>
-<Row>
+        <div>Description</div>
+        <Field  name="description" as='textarea'/>
+  <Row>
+      <Column> 
       <div>Itération</div>
         <Field type="number" name="count"/>
        
         <div>Fréquence</div>
-        <Field component="select" name="periodicity" >
+        <Field as="select" name="periodicity" placehoder=''>
             <option value="daily">quotidienne</option>
             <option value="weekly">hebdomadaire</option>
             <option value="monthly">mensuelle</option>
         </Field>
-
+        </Column>
+        <Column>
         <div>Date de fin</div>
             <PickerInput name="deadline" />
-        </Row>
-
+            </Column>
+  </Row>
+       
         <button type="submit"> +</button>
        
         </Form>

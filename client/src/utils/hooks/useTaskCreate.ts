@@ -1,21 +1,21 @@
 import useRequest from './useRequest';
 
 
-type Event = {
+type Task = {
   name: string;
   description: string;
   date:Date;
 };
 
-function useEventCreate(): {
+function useTaskCreate(): {
   create: (
-    event: Event,
-  ) => Promise<{ data?: Event; error?: Error }>;
+    task: Task,
+  ) => Promise<{ data?: Task; error?: Error }>;
 } {
-  const request = useRequest<Event, Error>();
+  const request = useRequest<Task, Error>();
 
   async function create(
-    event: Event
+    event: Task
   ) {
 
     const { data, error } = await request(
@@ -30,4 +30,4 @@ function useEventCreate(): {
   return { create };
 }
 
-export default useEventCreate;
+export default useTaskCreate;

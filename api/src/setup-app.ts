@@ -5,7 +5,7 @@ const cookieSession = require('cookie-session');
 
 export const setUpApp = (app: any) => {
   app.enableCors({
-    origin: true,
+    origin: ['http://localhost:3001'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });

@@ -13,7 +13,6 @@ function useRequest<Data, Error = unknown>(): (
 
   async function request(
     endpoint: Endpoint,
-    
     payload?: Payload,
     method: Method = 'POST'
   ) {
@@ -21,8 +20,6 @@ function useRequest<Data, Error = unknown>(): (
     const headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-       
-        
     }
 
     try {
@@ -30,7 +27,7 @@ function useRequest<Data, Error = unknown>(): (
         ...(payload ? { body: JSON.stringify(payload) } : null),
         method,
         headers,
-       
+        credentials: 'include',
       });
 
       return { data };
