@@ -1,0 +1,52 @@
+import { Ethis } from '../../types/Ethis';
+import useRequest from './useRequest';
+
+type Ethese = {
+  count?: number;
+  ethisList?: Ethis[];
+  error: boolean;
+  loading: boolean;
+  total?: number;
+};
+
+type Props = {
+  search?: string;
+};
+
+export function useTasks({
+
+  search
+}: Props): Ethese {
+  let url = `/tasks`;
+
+
+  if (search) {
+    url = `${url}&q=${search}`;
+  }
+
+  const getTasks = useRequest<{
+    count: number;
+    data: Ethis[];
+    total: number;
+  }>();
+
+  if (data) {
+    const { count, data: ethisList, total } = data;
+
+    return {
+      count,
+      ethisList,
+      error: false,
+      loading: false,
+      total,
+    };
+  }
+
+  return {
+    count: undefined,
+    ethisList: undefined,
+    error: Boolean(error),
+    loading: !error && data === undefined,
+    total: undefined,
+  };
+}
